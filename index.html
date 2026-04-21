@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emiliano L. Compassi — Cybersecurity & Software Design</title>
+<title>Emiliano L. Compassi · Cybersecurity & Software Design</title>
 <style>
 :root {
   --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -296,16 +296,17 @@ nav {
     oklch(0.72 0.16 210) 55%,
     var(--accent) 80%,
     oklch(0.62 0.18 300) 100%);
-  background-size: 200% 100%;
+  background-size: 300% 100%;
+  padding-right: 0.08em;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradShimmer 3s ease-in-out infinite;
 }
 @keyframes gradShimmer {
-  0%   { background-position: 100% 0; }
+  0%   { background-position: 200% 0; }
   50%  { background-position: 0% 0; }
-  100% { background-position: 100% 0; }
+  100% { background-position: 200% 0; }
 }
 
 /* ── ABOUT ── */
@@ -554,7 +555,7 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
     <div class="about-grid">
       <div class="about-text r d2">
         <p>Specializing in <strong>offensive security</strong>, penetration testing, and secure software architecture. I build robust security solutions and identify vulnerabilities before they become threats.</p>
-        <p>Across every engagement I bring <strong>Python & C-level systems knowledge</strong>, deep Linux/macOS fluency, and a builder's mindset — from homelab infrastructure to enterprise security assessments.</p>
+        <p>Across every engagement I bring <strong>Python & C-level systems knowledge</strong>, deep Linux/macOS fluency, and a builder's mindset, from homelab infrastructure to enterprise security assessments.</p>
       </div>
       <div class="skills-grid r d3">
         <div class="chip glass"><div class="chip-name">Penetration Testing</div><div class="chip-cat">Offensive</div></div>
@@ -578,7 +579,7 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
   <div class="par-front" id="par1-front">
     <div class="par-eyebrow r">The mission</div>
     <h2 class="par-title r d1">Every system<br><span class="grad-reveal" id="gradReveal">has a weakness.</span></h2>
-    <p class="par-body r d2">I find them before adversaries do — then build defences that hold under real-world pressure.</p>
+    <p class="par-body r d2">I find them before adversaries do, then build defences that hold under real-world pressure.</p>
   </div>
 </div>
 
@@ -606,9 +607,9 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
 [+] VirusTotal: clean · Subdomains: 14<br>
           </div>
         </div>
-        <span class="bc-num">01 — Featured</span>
+        <span class="bc-num">01 · Featured</span>
         <h3 class="bc-title">OSINT Meridian</h3>
-        <p class="bc-desc">Passive recon aggregator for penetration testers. Type a target, get results from every source simultaneously in a live terminal UI — DNS, WHOIS, Shodan, VirusTotal, GitHub dorking, and more.</p>
+        <p class="bc-desc">Passive recon aggregator for penetration testers. Type a target, get results from every source simultaneously in a live terminal UI: DNS, WHOIS, Shodan, VirusTotal, GitHub dorking, and more.</p>
         <div class="bc-tags"><span class="bc-tag">Python</span><span class="bc-tag">OSINT</span><span class="bc-tag">Penetration Testing</span><span class="bc-tag">Terminal UI</span><span class="bc-tag">Recon</span></div>
       </div>
       <div class="glass bc r d2">
@@ -698,19 +699,19 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
     <h2 class="sh r d1">Career <span class="grad-reveal">timeline.</span></h2>
     <div class="tl">
       <div class="tlr r d1">
-        <div class="tl-yr">2026 — Present</div>
+        <div class="tl-yr">2026 – Present</div>
         <div class="tl-role">OSINT Researcher &amp; Photojournalist</div>
         <div class="tl-org">Cherwell</div>
         <div class="tl-info">Open-source intelligence research and photojournalism across editorial and media contexts.</div>
       </div>
       <div class="tlr r d2">
-        <div class="tl-yr">Jun 2024 — Oct 2025</div>
+        <div class="tl-yr">Jun 2024 – Oct 2025</div>
         <div class="tl-role">Information Security Specialist &amp; Project Lead</div>
         <div class="tl-org">Confidential</div>
         <div class="tl-info">Designed and deployed RAID 5 NAS for sensitive business data. Conducted security assessments of IT infrastructure, managed network deployment, and led cross-functional teams of up to 50 staff.</div>
       </div>
       <div class="tlr r d3">
-        <div class="tl-yr">2018 — 2019</div>
+        <div class="tl-yr">2018 – 2019</div>
         <div class="tl-role">Co-Founder</div>
         <div class="tl-org">Earthquake Charity Relief</div>
         <div class="tl-info">Raised €11,000 and maintained direct financial control and accountability over funds through on-ground verification and transparent reporting to stakeholders.</div>
@@ -903,10 +904,11 @@ function splitWords(el) {
     } else if (node.nodeName === 'BR') {
       el.appendChild(document.createElement('br'));
     } else {
-      const c = node.cloneNode(true);
-      if (c.classList) c.classList.add('wrd');
-      if (c.style) c.style.setProperty('--d', `${i++ * 0.13}s`);
-      el.appendChild(c);
+      const wrapper = document.createElement('span');
+      wrapper.className = 'wrd';
+      wrapper.style.setProperty('--d', `${i++ * 0.13}s`);
+      wrapper.appendChild(node.cloneNode(true));
+      el.appendChild(wrapper);
     }
   });
   el.classList.add('wrd-split');
