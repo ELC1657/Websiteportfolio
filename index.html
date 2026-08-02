@@ -3,7 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emiliano L. Compassi · Cybersecurity & Software Design</title>
+<title>Emiliano L. Compassi · Cybersecurity Specialist</title>
+<meta name="description" content="Cybersecurity specialist focused on offensive security, penetration testing and secure software architecture. CompTIA Security+ certified. Open to full-time roles.">
+<meta name="author" content="Emiliano L. Compassi">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#282828" media="(prefers-color-scheme: dark)">
+
+<link rel="canonical" href="https://emilianocompassi.dev/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://emilianocompassi.dev/">
+<meta property="og:site_name" content="Emiliano L. Compassi">
+<meta property="og:title" content="Emiliano L. Compassi · Cybersecurity Specialist">
+<meta property="og:description" content="Offensive security, penetration testing and secure software architecture. CompTIA Security+ certified. Open to full-time roles.">
+<meta property="og:image" content="https://emilianocompassi.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Emiliano L. Compassi — Cybersecurity Specialist">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Emiliano L. Compassi · Cybersecurity Specialist">
+<meta name="twitter:description" content="Offensive security, penetration testing and secure software architecture. CompTIA Security+ certified. Open to full-time roles.">
+<meta name="twitter:image" content="https://emilianocompassi.dev/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230071e3'/%3E%3Ctext x='50' y='69' font-family='-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif' font-size='54' font-weight='600' letter-spacing='-3' fill='%23ffffff' text-anchor='middle'%3EEC%3C/text%3E%3C/svg%3E">
+
+<!-- Resolve theme before first paint so dark-mode visitors never see a light flash -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = saved
+        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch (e) { /* private mode — fall back to the markup default */ }
+  })();
+</script>
 <style>
 :root {
   --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -378,13 +410,13 @@ nav {
 .mpd.g { background: var(--accent2); }
 
 /* ── TIMELINE ── */
-#experience { background: var(--bg3); }
+#experience { background: var(--bg2); }
 .tl { padding-left: 28px; border-left: .5px solid var(--sep); margin-top: 64px; }
 .tlr { padding: 0 0 52px 32px; position: relative; cursor: default; }
 .tlr::before {
   content: ''; position: absolute; left: -5px; top: 7px;
   width: 9px; height: 9px; border-radius: 50%;
-  background: var(--bg3); border: 1px solid var(--sep);
+  background: var(--bg2); border: 1px solid var(--sep);
   transition: border-color .25s, background .25s;
 }
 .tlr:hover::before { border-color: var(--accent); background: var(--accent); }
@@ -548,6 +580,51 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
     linear-gradient(to bottom, rgba(29,20,10,0.20) 0%, transparent 14%, transparent 82%, rgba(29,20,10,0.35) 100%);
 }
 
+/* ── LINKABLE WORK CARDS ── */
+a.bc { text-decoration: none; color: inherit; cursor: pointer; }
+/* Column layout so every card's footer rule sits on the same baseline */
+.bc { display: flex; flex-direction: column; }
+.bc-viz { flex-shrink: 0; }
+.bc-tags { margin-bottom: 20px; }
+.bc-foot {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: auto; padding-top: 16px;
+  border-top: .5px solid var(--sep);
+  font-family: var(--sf-mono); font-size: 10px;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--text3); transition: color .25s;
+}
+a.bc:hover .bc-foot { color: var(--accent); }
+.bc-foot-arr { margin-left: auto; transition: transform .25s var(--ease); }
+a.bc:hover .bc-foot-arr { transform: translate(3px,-3px); }
+.bc-foot svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+/* Give the tilt somewhere to project into — without this, rotateX/Y render flat */
+.bento, .skills-grid, .writing-grid, .c-links { perspective: 1400px; }
+
+.hero-btns { flex-wrap: wrap; }
+
+/* ── FOCUS VISIBILITY ── */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.pill:focus-visible, .cl:focus-visible, a.bc:focus-visible,
+.ac:focus-visible { outline-offset: 4px; }
+.theme-btn:focus-visible { outline-offset: 3px; }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .r, .wrd, .hw, .hero-eyebrow, .hero-eyebrow-wrap,
+  .hero-sub, .hero-btns, .scroll-hint {
+    opacity: 1 !important; transform: none !important; filter: none !important;
+  }
+  .mq-track, .mq-track.rev, .bc-viz-term { animation: none !important; }
+}
+
 @media (max-width: 740px) {
   .nav-links li:not(:last-child) { display: none; }
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -569,8 +646,8 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#expertise">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#writing">Writing</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><button class="theme-btn" id="themeBtn"><div class="theme-knob"></div></button></li>
     </ul>
@@ -593,6 +670,7 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
     <p class="hero-sub">Offensive security, penetration testing &amp;<br>secure software architecture.</p>
     <div class="hero-btns">
       <a href="#work" class="pill pill-blue">View work</a>
+      <a href="resume.pdf" class="pill pill-soft" download="Emiliano-Compassi-CV.pdf">Download résumé</a>
       <a href="#contact" class="pill pill-soft">Get in touch</a>
     </div>
   </div>
@@ -648,7 +726,7 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
     <div class="eyebrow r">Selected work</div>
     <h2 class="sh r d1">Projects &amp; case studies.</h2>
     <div class="bento">
-      <div class="glass bc w2 r d1">
+      <a href="https://github.com/ELC1657/OSINTMeridian" target="_blank" rel="noopener" class="glass bc w2 r d1">
         <div class="bc-viz">
           <div class="bc-viz-term">
 [*] target: example.com<br>
@@ -668,30 +746,50 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
         <h3 class="bc-title">OSINT Meridian</h3>
         <p class="bc-desc">Passive recon aggregator for penetration testers. Type a target, get results from every source simultaneously in a live terminal UI: DNS, WHOIS, Shodan, VirusTotal, GitHub dorking, and more.</p>
         <div class="bc-tags"><span class="bc-tag">Python</span><span class="bc-tag">OSINT</span><span class="bc-tag">Penetration Testing</span><span class="bc-tag">Terminal UI</span><span class="bc-tag">Recon</span></div>
-      </div>
-      <div class="glass bc r d2">
+        <div class="bc-foot">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          ELC1657/OSINTMeridian<span class="bc-foot-arr">↗</span>
+        </div>
+      </a>
+      <a href="https://github.com/ELC1657/terminalpacketsniffer" target="_blank" rel="noopener" class="glass bc r d2">
         <span class="bc-num">02 · 2026</span>
         <h3 class="bc-title">Terminal Packet Sniffer</h3>
         <p class="bc-desc">Terminal-based network packet sniffer with a live TUI showing real-time traffic, automatic security alerts, PCAP export/replay, and an interactive packet detail browser.</p>
         <div class="bc-tags"><span class="bc-tag">Python</span><span class="bc-tag">Scapy</span><span class="bc-tag">Network Security</span></div>
-      </div>
-      <div class="glass bc r d2">
-        <span class="bc-num">03 · 2024</span>
+        <div class="bc-foot">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          ELC1657/terminalpacketsniffer<span class="bc-foot-arr">↗</span>
+        </div>
+      </a>
+      <a href="https://github.com/ELC1657/SSH-portfolio" target="_blank" rel="noopener" class="glass bc r d2">
+        <span class="bc-num">03 · 2026</span>
+        <h3 class="bc-title">SSH Portfolio</h3>
+        <p class="bc-desc">This portfolio, rebuilt as a Go terminal application you connect to over SSH. Bubble Tea TUI with an animated splash, keyboard navigation, and the same sections rendered entirely in the terminal.</p>
+        <div class="bc-tags"><span class="bc-tag">Go</span><span class="bc-tag">Bubble Tea</span><span class="bc-tag">SSH</span><span class="bc-tag">TUI</span></div>
+        <div class="bc-foot">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          ELC1657/SSH-portfolio<span class="bc-foot-arr">↗</span>
+        </div>
+      </a>
+      <div class="glass bc r d3">
+        <span class="bc-num">04 · 2024</span>
         <h3 class="bc-title">Homelab NAS with VPN</h3>
         <p class="bc-desc">Multi-disk RAID 6 storage system (Linux mdadm) with Samba/NFS shares. Self-hosted WireGuard/OpenVPN with dynamic DNS, port forwarding, and firewall rules.</p>
         <div class="bc-tags"><span class="bc-tag">Linux</span><span class="bc-tag">WireGuard</span><span class="bc-tag">OpenVPN</span><span class="bc-tag">RAID 6</span></div>
-      </div>
-      <div class="glass bc r d3">
-        <span class="bc-num">04 · 2025</span>
-        <h3 class="bc-title">Intrusion Detection System</h3>
-        <p class="bc-desc">Network monitoring and traffic analysis system on home network using signature-based detection. Configured Snort/Suricata with Syslog for centralized logging and real-time alerting.</p>
-        <div class="bc-tags"><span class="bc-tag">Snort</span><span class="bc-tag">Suricata</span><span class="bc-tag">Wireshark</span></div>
+        <div class="bc-foot">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.8" rx="1.6"/><path d="M5.6 7V4.9a2.4 2.4 0 0 1 4.8 0V7"/></svg>
+          Private infrastructure
+        </div>
       </div>
       <div class="glass bc r d3">
         <span class="bc-num">05 · 2025</span>
-        <h3 class="bc-title">Client Portfolio Website</h3>
-        <p class="bc-desc">Designed and developed a modern portfolio website for a client, featuring clean aesthetics, responsive design, and optimized performance for showcasing creative work.</p>
-        <div class="bc-tags"><span class="bc-tag">React</span><span class="bc-tag">TypeScript</span><span class="bc-tag">UI/UX</span></div>
+        <h3 class="bc-title">Intrusion Detection System</h3>
+        <p class="bc-desc">Network monitoring and traffic analysis system on home network using signature-based detection. Configured Snort/Suricata with Syslog for centralized logging and real-time alerting.</p>
+        <div class="bc-tags"><span class="bc-tag">Snort</span><span class="bc-tag">Suricata</span><span class="bc-tag">Wireshark</span></div>
+        <div class="bc-foot">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.8" rx="1.6"/><path d="M5.6 7V4.9a2.4 2.4 0 0 1 4.8 0V7"/></svg>
+          Private infrastructure
+        </div>
       </div>
     </div>
   </div>
@@ -749,6 +847,54 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
 
 <div class="div"></div>
 
+<!-- WRITING -->
+<section id="writing" class="sp">
+  <div class="w">
+    <div class="eyebrow r">Writing</div>
+    <h2 class="sh r d1">Latest articles &amp;<br><span class="grad-reveal">research.</span></h2>
+    <div class="writing-grid">
+      <a href="https://emilianocybersec.substack.com/p/handala-wiped-200000-stryker-devices" target="_blank" rel="noopener" class="glass ac r d1">
+        <div class="ac-img"><img src="handala.webp" alt="Stryker headquarters" loading="lazy" decoding="async"></div>
+        <div class="ac-body">
+          <div class="ac-date">Mar 13, 2026</div>
+          <div class="ac-title">Handala Wiped 200,000 Stryker Devices. They Didn't Need Malware.</div>
+          <div class="ac-excerpt">Iran-linked hacking group Handala has claimed a mass destructive attack on medical technology giant Stryker, sending thousands of employees home across 79 countries.</div>
+          <div class="ac-arr">↗</div>
+        </div>
+      </a>
+      <a href="https://emilianocybersec.substack.com/p/ruby-jumper-how-north-koreas-scarcruft" target="_blank" rel="noopener" class="glass ac r d2">
+        <div class="ac-img"><img src="scarcruft.webp" alt="Air gap bridging" style="object-position: center 70%;" loading="lazy" decoding="async"></div>
+        <div class="ac-body">
+          <div class="ac-date">Mar 1, 2026</div>
+          <div class="ac-title">Ruby Jumper: How North Korea's ScarCruft Is Bridging the Air Gap</div>
+          <div class="ac-excerpt">ScarCruft's latest campaign deploys six malware families, abuses Bluetooth, and targets air-gapped networks previously thought unreachable.</div>
+          <div class="ac-arr">↗</div>
+        </div>
+      </a>
+      <a href="https://emilianocybersec.substack.com/p/europe-is-waking-up-to-its-digital" target="_blank" rel="noopener" class="glass ac r d3">
+        <div class="ac-img"><img src="europe.webp" alt="US EU chip" loading="lazy" decoding="async"></div>
+        <div class="ac-body">
+          <div class="ac-date">Feb 26, 2026</div>
+          <div class="ac-title">Europe Is Waking Up to Its Digital Dependency, and It's Uncomfortable</div>
+          <div class="ac-excerpt">Washington's unpredictability is doing what years of EU policy couldn't: forcing Europe off American infrastructure.</div>
+          <div class="ac-arr">↗</div>
+        </div>
+      </a>
+      <a href="https://emilianocybersec.substack.com/p/technical-breakdown-of-notpetya" target="_blank" rel="noopener" class="glass ac r d4">
+        <div class="ac-img"><img src="notpetya.webp" alt="NotPetya ransomware screen" loading="lazy" decoding="async"></div>
+        <div class="ac-body">
+          <div class="ac-date">Feb 25, 2026</div>
+          <div class="ac-title">Technical Breakdown of NotPetya</div>
+          <div class="ac-excerpt">How a nation-state cyber weapon disguised as ransomware wiped over $10 billion in global economic damage — and why attribution still matters.</div>
+          <div class="ac-arr">↗</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
 <!-- EXPERIENCE -->
 <section id="experience" class="sp">
   <div class="w">
@@ -779,80 +925,48 @@ footer span { font-family: var(--sf-mono); font-size: 11px; letter-spacing: .1em
 
 <div class="div"></div>
 
-<!-- WRITING -->
-<section id="writing" class="sp">
-  <div class="w">
-    <div class="eyebrow r">Writing</div>
-    <h2 class="sh r d1">Latest articles &amp;<br><span class="grad-reveal">research.</span></h2>
-    <div class="writing-grid">
-      <a href="https://emilianocybersec.substack.com/p/handala-wiped-200000-stryker-devices" target="_blank" rel="noopener" class="glass ac r d1">
-        <div class="ac-img"><img src="handala.jpg" alt="Stryker headquarters"></div>
-        <div class="ac-body">
-          <div class="ac-date">Mar 13, 2026</div>
-          <div class="ac-title">Handala Wiped 200,000 Stryker Devices. They Didn't Need Malware.</div>
-          <div class="ac-excerpt">Iran-linked hacking group Handala has claimed a mass destructive attack on medical technology giant Stryker, sending thousands of employees home across 79 countries.</div>
-          <div class="ac-arr">↗</div>
-        </div>
-      </a>
-      <a href="https://emilianocybersec.substack.com/p/ruby-jumper-how-north-koreas-scarcruft" target="_blank" rel="noopener" class="glass ac r d2">
-        <div class="ac-img"><img src="scarcruft.webp" alt="Air gap bridging" style="object-position: center 70%;"></div>
-        <div class="ac-body">
-          <div class="ac-date">Mar 1, 2026</div>
-          <div class="ac-title">Ruby Jumper: How North Korea's ScarCruft Is Bridging the Air Gap</div>
-          <div class="ac-excerpt">ScarCruft's latest campaign deploys six malware families, abuses Bluetooth, and targets air-gapped networks previously thought unreachable.</div>
-          <div class="ac-arr">↗</div>
-        </div>
-      </a>
-      <a href="https://emilianocybersec.substack.com/p/europe-is-waking-up-to-its-digital" target="_blank" rel="noopener" class="glass ac r d3">
-        <div class="ac-img"><img src="europe.webp" alt="US EU chip"></div>
-        <div class="ac-body">
-          <div class="ac-date">Feb 26, 2026</div>
-          <div class="ac-title">Europe Is Waking Up to Its Digital Dependency, and It's Uncomfortable</div>
-          <div class="ac-excerpt">Washington's unpredictability is doing what years of EU policy couldn't: forcing Europe off American infrastructure.</div>
-          <div class="ac-arr">↗</div>
-        </div>
-      </a>
-      <a href="https://emilianocybersec.substack.com/p/technical-breakdown-of-notpetya" target="_blank" rel="noopener" class="glass ac r d4">
-        <div class="ac-img"><img src="notpetya.webp" alt="NotPetya ransomware screen"></div>
-        <div class="ac-body">
-          <div class="ac-date">Feb 25, 2026</div>
-          <div class="ac-title">Technical Breakdown of NotPetya</div>
-          <div class="ac-excerpt">How a nation-state cyber weapon disguised as ransomware wiped over $10 billion in global economic damage — and why attribution still matters.</div>
-          <div class="ac-arr">↗</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="c-w">
     <div class="eyebrow r">Contact</div>
     <h2 class="sh r d1" style="margin-bottom:18px">Let's build<br><span class="grad-reveal">something secure.</span></h2>
-    <p class="r d2">Available for security consulting, penetration testing engagements, and software design projects.</p>
-    <div class="r d2"><a href="/cdn-cgi/l/email-protection#ef8a829580ded9dad8af9f82c1828a" class="pill pill-blue">Send an email</a></div>
+    <p class="r d2">I'm looking for a full-time role in offensive security or security engineering. If you're hiring, I'd like to hear from you.</p>
+    <div class="r d2"><a href="mailto:emzo1657@pm.me?subject=Role%20enquiry" class="pill pill-blue">Send an email</a></div>
     <div class="c-links r d3">
-      <a href="https://www.linkedin.com/in/emiliano-compassi-21b46a217/" target="_blank" class="glass cl"><span class="cl-lbl">LinkedIn</span><span class="cl-arr">↗</span></a>
-      <a href="https://github.com/ELC1657" target="_blank" class="glass cl"><span class="cl-lbl">GitHub</span><span class="cl-arr">↗</span></a>
+      <a href="resume.pdf" download="Emiliano-Compassi-CV.pdf" class="glass cl"><span class="cl-lbl">Résumé (PDF)</span><span class="cl-arr">↓</span></a>
+      <a href="https://www.linkedin.com/in/emiliano-compassi-21b46a217/" target="_blank" rel="noopener" class="glass cl"><span class="cl-lbl">LinkedIn</span><span class="cl-arr">↗</span></a>
+      <a href="https://github.com/ELC1657" target="_blank" rel="noopener" class="glass cl"><span class="cl-lbl">GitHub</span><span class="cl-arr">↗</span></a>
+      <a href="https://emilianocybersec.substack.com" target="_blank" rel="noopener" class="glass cl"><span class="cl-lbl">Substack</span><span class="cl-arr">↗</span></a>
     </div>
   </div>
 </section>
 
 <footer>
   <span>© 2026 Emiliano L. Compassi</span>
-  <span><span class="f-dot"></span>Available for work</span>
+  <span><span class="f-dot"></span>Open to full-time roles</span>
   <span>CompTIA A+ · Security+ · CS50</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+/* ── MOTION PREFERENCE ── */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 /* ── THEME ── */
+/* Initial value is resolved by the inline script in <head>, before first paint. */
 const html = document.documentElement;
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
 document.getElementById('themeBtn').addEventListener('click', () => {
   const next = html.dataset.theme === 'light' ? 'dark' : 'light';
   html.dataset.theme = next;
+  try { localStorage.setItem('theme', next); } catch (e) {}
+  applyTw();
+});
+
+/* Track the OS only until the visitor makes an explicit choice */
+prefersDark.addEventListener('change', e => {
+  try { if (localStorage.getItem('theme')) return; } catch (err) { return; }
+  html.dataset.theme = e.matches ? 'dark' : 'light';
   applyTw();
 });
 
@@ -876,6 +990,7 @@ function onScroll() {
   if (ticking) return;
   ticking = true;
   requestAnimationFrame(() => {
+    if (reduceMotion.matches) { ticking = false; return; }
     const sy = window.scrollY;
 
     // Hero: content moves up at 40% of scroll speed (classic parallax)
@@ -910,12 +1025,15 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 /* ── GLASS 3D TILT ── */
+/* The containers now set `perspective`, so these rotations actually project.
+   Angles are deliberately small — at 7deg with real perspective it reads as a toy. */
 document.querySelectorAll('.glass').forEach(card => {
   card.addEventListener('mousemove', e => {
+    if (reduceMotion.matches) return;
     const r = card.getBoundingClientRect();
     const cx = (e.clientX - r.left) / r.width  - .5;
     const cy = (e.clientY - r.top)  / r.height - .5;
-    card.style.transform = `translateY(-5px) rotateY(${cx * 7}deg) rotateX(${-cy * 5}deg)`;
+    card.style.transform = `translateY(-4px) rotateY(${cx * 3}deg) rotateX(${-cy * 2.4}deg)`;
   });
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
@@ -928,6 +1046,7 @@ document.querySelectorAll('.bc-tags').forEach(wrap => {
 /* ── MAGNETIC PILLS + RIPPLE ── */
 document.querySelectorAll('.pill').forEach(btn => {
   btn.addEventListener('mousemove', e => {
+    if (reduceMotion.matches) return;
     const r = btn.getBoundingClientRect();
     btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.18}px) scale(1.04)`;
   });
